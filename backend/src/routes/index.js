@@ -1,0 +1,27 @@
+import { Router } from 'express';
+import { auth, wrap } from '../middleware/auth.js';
+import * as a from '../controllers/authController.js';
+import * as cn from '../controllers/connectionController.js';
+import * as t from '../controllers/templateController.js';
+import * as ct from '../controllers/contactController.js';
+import * as cp from '../controllers/campaignController.js';
+
+const r = Router();
+r.post('/auth/register', wrap(a.register));
+r.post('/auth/login', wrap(a.login));
+r.use(auth);
+r.get('/connection/status', wrap(cn.status));
+r.post('/connection/embedded', wrap(cn.connectEmbedded));
+r.post('/connection/manual', wrap(cn.connectManual));
+r.delete('/connection', wrap(cn.disconnect));
+r.get('/templates', wrap(t.list));
+r.post('/templates', wrap(t.create));
+r.delete('/templates/:name', wrap(t.remove));
+r.get('/contacts', wrap(ct.list));
+r.post('/contacts', wrap(ct.create));
+r.post('/contacts/import', wrap(ct.importMany));
+r.delete('/contacts/:id', wrap(ct.remove));
+r.get('/campaigns', wrap(cp.list));
+r.post('/campaigns', wrap(cp.create));
+r.post('/campaigns/test', wrap(cp.test));
+export default r;

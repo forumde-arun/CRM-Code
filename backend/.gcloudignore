@@ -1,0 +1,11 @@
+@"
+node_modules/
+.env
+.env.*
+!.env.example
+.next/
+dist/
+*.log
+"@ | Set-Content .gitignore
+
+Set-Content README.md "# Whatsapp_CRM"
