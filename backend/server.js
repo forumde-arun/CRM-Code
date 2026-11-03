@@ -81,7 +81,7 @@ await connectDB();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  log.info('SERVER', `FlowWA API running on port ${PORT}`);
+  log.info('SERVER', `CRM running on port ${PORT}`);
   log.info('CONFIG', 'Keys present?', {
     META_APP_ID: !!process.env.META_APP_ID,
     META_APP_SECRET: !!process.env.META_APP_SECRET,
