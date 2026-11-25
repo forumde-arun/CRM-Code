@@ -1,14 +1,16 @@
+
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default async function connectDB() {
   try {
-    const mongoUri = process.env.MONGO_URI;
+    const MONGO_URI =
+      process.env.MONGO_URI ||
+      'mongodb+srv://arun-kumar:Arun-kumar2026@cluster0.vbulgh.mongodb.net/?appName=Cluster0';
 
-    if (!mongoUri) {
-      throw new Error('MONGO_URI is missing from environment variables');
-    }
-
-    await mongoose.connect(mongoUri);
+    await mongoose.connect(MONGO_URI);
 
     console.log('MongoDB connected successfully');
   } catch (error) {

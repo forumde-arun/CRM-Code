@@ -1,5 +1,5 @@
 import './globals.css';
-import { SITE } from '@/lib/site';
+import { SITE } from '../lib/site';
 
 export const metadata = {
   metadataBase: new URL(SITE.url),
